@@ -37,6 +37,7 @@ null_replacers = [
 # ]
 
 y = data.obito
+df = data
 data.drop(columns=['id', 'obito'], inplace=True)
 
 for i, col in enumerate(data.columns):
@@ -87,3 +88,4 @@ isof = IsolationForest()
 p = isof.fit_predict(X)
 
 # %%
+newdata = df.iloc[p==1]

@@ -86,8 +86,10 @@ def testset_preprocessing(data):
 
 # %%
 i = Input(shape=X.shape[1])
-x = Dense(8, activation='relu')(i)
-x = Dense(16, activation='relu')(x)
+x = Dense(64, activation='sigmoid')(i)
+x = Dense(128, activation='sigmoid')(x)
+x = Dense(64, activation='sigmoid')(x)
+x = Dense(32, activation='sigmoid')(x)
 x = Dense(1, activation='sigmoid')(x)
 
 model = Model(i, x)
@@ -97,7 +99,7 @@ model.compile(optimizer='adam',
               metrics=['accuracy', 'AUC'],)
 
 # %%
-r = model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=40)
+r = model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=50)
 
 # %%
 plt.plot(r.history['accuracy'], label='accuracy')
