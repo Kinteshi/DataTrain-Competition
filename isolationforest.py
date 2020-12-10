@@ -89,3 +89,6 @@ p = isof.fit_predict(X)
 
 # %%
 newdata = df.iloc[p==1]
+
+#%%
+newdata.to_csv('data/nooutliers.csv')
